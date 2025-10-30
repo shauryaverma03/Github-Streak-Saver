@@ -1,0 +1,26 @@
+name: GitHub Streak Saver
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Runs every day at 6 AM UTC
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  update-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update timestamp file
+        run: |
+          echo "Last updated: $(date -u)" > update.txt
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add update.txt
+          git commit -m "Auto commit: $(date -u)"
+          git push
