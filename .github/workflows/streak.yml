@@ -2,26 +2,31 @@ name: GitHub Streak Saver
 
 on:
   schedule:
-    - cron: '0 3 * * *'  # Runs every day at 3 AM UTC (which is 8:30 AM IST)
-  workflow_dispatch:      # Allows manual trigger
+    - cron: '0 3 * * *'  # Runs every day at 8:30 AM IST
+  workflow_dispatch:      # Allows you to run it manually
 
 jobs:
   update-commit:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write    # ✅ This allows GitHub Action to push commits
 
     steps:
+      # Step 1: Checkout your repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 2: Update timestamp file
       - name: Update timestamp file
         run: |
-          # Get current time in IST (Asia/Kolkata)
+          # Create or overwrite update.txt with current IST date & time
           echo "Last updated: $(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S %Z')" > update.txt
 
+      # Step 3: Commit and push the change
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add update.txt
-          git commit -m "Auto commit: $(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S %Z')"
-          git push
+          git commit -m "Auto commit: $(TZ='Asia/Kolkata' date '+%Y-%m-%d %H:%M:%S %Z')" || echo "No changes to commit"
+          git push origin main
