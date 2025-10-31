@@ -150,7 +150,7 @@ The workflow will automatically run daily at **8:30 AM IST**. You can also trigg
 
 **Shaurya Verma**  
 🎓 B.Tech CSE @ Lovely Professional University  
-💼 [GitHub](https://github.com/shauryaverma03) • 🌍 [LinkedIn](https://linkedin.com/in/shauryaverma03) • 🧠 Automating Everyday Productivity
+💼 [GitHub](https://github.com/shauryaverma03) • 🌍 [LinkedIn](https://www.linkedin.com/in/shaurya47/) • 🧠 Automating Everyday Productivity
 
 ---
 
