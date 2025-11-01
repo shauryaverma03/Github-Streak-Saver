@@ -76,8 +76,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "your_username"
+          git config --global user.email "your_mail"
           git add update.txt
           git commit -m "Daily Commit" || echo "No changes to commit"
           git push origin main
