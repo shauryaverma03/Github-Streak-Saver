@@ -25,8 +25,8 @@ jobs:
       # Step 3: Commit and push the change
       - name: Commit and push changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "shauryaverma03"
+          git config --global user.email "shauryaverma036@gmail.com"
           git add update.txt
           git commit -m "Daily Commit" || echo "No changes to commit"
           git push origin main
